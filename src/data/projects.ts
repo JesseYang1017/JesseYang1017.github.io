@@ -6,6 +6,8 @@ export type ProjectImage = {
 export type ProjectVideo = {
   id: string;
   label?: string;
+  description?: string;
+  techniques?: string;
 };
 
 export type ProjectLink = {
@@ -24,9 +26,11 @@ export type Project = {
   category: string;
   summary: string;
   overview: string[];
+  approach?: string[];
+  contribution?: string[];
   features?: ProjectFeature[];
   implementation?: string;
-  implementationTitle?: string;
+  technicalDetails?: string[];
   technologies: string[];
   thumbnail?: ProjectImage;
   images: ProjectImage[];
@@ -42,6 +46,9 @@ export const projects: Project[] = [
     summary: "Three-band toon lighting with configurable thresholds and rim light.",
     overview: [
       "A custom toon shader built in Unity URP using ShaderLab and HLSL. It replaces smooth lighting transitions with three distinct color bands to create a stylized, cartoon-like appearance. The shader provides adjustable lighting thresholds, colors, and rim lighting to control the final result.",
+    ],
+    approach: [
+      "I structured the shader around three configurable lighting bands so the stylized look could be adjusted directly from the Material Inspector. Lighting thresholds and colors are controlled independently, while rim lighting is calculated as a separate view-dependent effect.",
     ],
     features: [
       {
@@ -102,6 +109,9 @@ export const projects: Project[] = [
     summary: "Noise-driven rust and edge wear for a procedural URP metal shader.",
     overview: [
       "A procedural weathered metal shader developed in Unity URP using HLSL. It generates rust patterns and surface wear through procedural noise rather than hand-painted rust masks. Rust coverage and appearance can be adjusted through material properties.",
+    ],
+    approach: [
+      "I started with FBM noise to generate irregular paint wear, but noise alone did not emphasize exposed edges. I combined the procedural mask with a model-derived edge mask, then used the resulting wear information to drive albedo, metallic, and smoothness together.",
     ],
     features: [
       {
@@ -164,12 +174,62 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: "animation-3d-modeling",
+    title: "3D Art & Animation",
+    category: "Animation & 3D Art",
+    summary: "3D modeling, rigging, animation, and VFX work across Maya and Blender.",
+    overview: [
+      "A collection of animation and 3D modeling work created using Autodesk Maya. These projects explore different aspects of 3D content creation and represent the artistic side of my experience alongside graphics programming.",
+      "The collection includes three animation pieces and selected modeling renders from the existing portfolio.",
+    ],
+    implementation:
+      "The work focuses on 3D modeling, animation, scene composition, materials, lighting, and rendering. Existing pieces include a first-person UFO encounter animation, an ocean-themed animated short, a retro game-inspired 3D scene, avatar modeling and rigging, a vanitas still life, and the shipwreck model used in the immersive environment project.",
+    technologies: ["Autodesk Maya", "Blender", "3D Modeling", "Animation", "Rigging"],
+    thumbnail: {
+      src: "/images/animation-3d-modeling.png",
+      alt: "Animation and 3D modeling preview",
+    },
+    images: [
+      { src: "/images/vanitas.png", alt: "Modern Vanitas 3D model render" },
+      { src: "/images/avatar-1.png", alt: "Avatar model render 1" },
+      { src: "/images/avatar-2.png", alt: "Avatar model render 2" },
+      { src: "/images/avatar-3.png", alt: "Avatar model render 3" },
+      { src: "/images/shipwreck-ship.png", alt: "Shipwreck model render" },
+    ],
+    videos: [
+      {
+        id: "fgfr_kAhnGU",
+        label: "ANIMATION 01 — OCEAN & DEFORMATION",
+        description:
+          "Created an animated ocean scene in Maya using mesh deformation and procedural ocean simulation. Used Maya deformers together with the Bifrost Ocean Simulation System (BOSS) to create animated surface motion and integrate the object animation with the ocean environment.",
+        techniques: "Maya / Deformers / BOSS Ocean Simulation / Keyframe Animation",
+      },
+      {
+        id: "AiPC00Xvt88",
+        label: "ANIMATION 02 — PROCEDURAL FRACTURE",
+        description:
+          "Created a procedural destruction animation in Maya using a MASH network to control duplicated geometry and motion, combined with shatter and fracture tools to produce the breakup effect.",
+        techniques: "Maya / MASH / Procedural Animation / Shatter / Fracture",
+      },
+      {
+        id: "tzou_ZFu_Eo",
+        label: "ANIMATION 03 — CAMERA & CINEMATIC STAGING",
+        description:
+          "Created a cinematic environment sequence using animated Maya camera controls, keyframed camera movement, framing, and scene composition to guide the viewer through the environment.",
+        techniques: "Maya / Camera Animation / Keyframing / Scene Composition",
+      },
+    ],
+    links: [],
+  },
+  {
     slug: "nist",
     title: "NIST",
     category: "AR / Mixed Reality",
     summary: "AR indoor navigation and visual collaboration for first responders.",
     overview: [
       "An AR navigation research project focused on helping first responders navigate unfamiliar indoor environments. The system uses interactive 3D visualization to present spatial information and navigation guidance.",
+    ],
+    contribution: [
       "My main contribution was designing and implementing an interactive Unity-based volumetric map for commander-side visualization. The map integrated responder scan data, spatial markers, and navigation paths so a commander could inspect the environment and coordinate movement.",
     ],
     features: [
@@ -199,8 +259,9 @@ export const projects: Project[] = [
           "Incorporates spatial data from team members using HoloLens 2 devices to scan and mesh indoor surroundings.",
       },
     ],
-    implementation:
+    technicalDetails: [
       "I implemented the Unity visualization layer for the 3D volumetric map, combining incoming HoloLens 2 spatial data with feature markers and Unity NavMesh path generation. Real-time updates were streamed through WebSocket connections, while the commander interface supported operations such as zooming, rotating, clipping, and sending selected navigation targets back into the system.",
+    ],
     technologies: [
       "Unity",
       "C#",
@@ -242,6 +303,8 @@ export const projects: Project[] = [
     summary: "An underwater shipwreck exploration experience for a CAVE system.",
     overview: [
       "An underwater shipwreck environment developed in Unity as a prototype for a CAVE-based immersive experience. The project explores how 3D modeling, lighting, and environmental presentation can create an underwater exploration scene.",
+    ],
+    contribution: [
       "I created the sunken ship model in Blender and built the surrounding underwater scene in Unity, focusing on the feeling of exploring a dark environment with a limited light source.",
     ],
     features: [
@@ -271,9 +334,9 @@ export const projects: Project[] = [
           "Developed as an immersive scene intended for display in a CAVE system.",
       },
     ],
-    implementationTitle: "Creation Process",
-    implementation:
+    technicalDetails: [
       "My workflow combined Blender modeling with Unity scene composition, lighting, and material setup. I modeled the shipwreck geometry, placed it in an underwater scene, and tuned the lighting and materials so the environment had limited visibility and stronger depth cues for immersive presentation.",
+    ],
     technologies: ["Unity", "Blender", "CAVE", "VR", "Shaders", "3D Modeling"],
     thumbnail: {
       src: "/images/explore-shipwreck.png",
@@ -286,37 +349,6 @@ export const projects: Project[] = [
       },
     ],
     videos: [{ id: "c_7iky1aCok", label: "Demo" }],
-    links: [],
-  },
-  {
-    slug: "animation-3d-modeling",
-    title: "Animation & 3D Modeling",
-    category: "Animation & 3D Art",
-    summary: "A focused collection of animation and 3D modeling work.",
-    overview: [
-      "A collection of animation and 3D modeling work created using Autodesk Maya. These projects explore different aspects of 3D content creation and represent the artistic side of my experience alongside graphics programming.",
-      "The collection includes three animation pieces and selected modeling renders from the existing portfolio.",
-    ],
-    implementationTitle: "Production Process",
-    implementation:
-      "The work focuses on 3D modeling, animation, scene composition, materials, lighting, and rendering. Existing pieces include a first-person UFO encounter animation, an ocean-themed animated short, a retro game-inspired 3D scene, avatar modeling and rigging, a vanitas still life, and the shipwreck model used in the immersive environment project.",
-    technologies: ["Autodesk Maya", "Blender", "3D Modeling", "Animation", "Rigging"],
-    thumbnail: {
-      src: "/images/animation-3d-modeling.png",
-      alt: "Animation and 3D modeling preview",
-    },
-    images: [
-      { src: "/images/vanitas.png", alt: "Modern Vanitas 3D model render" },
-      { src: "/images/avatar-1.png", alt: "Avatar model render 1" },
-      { src: "/images/avatar-2.png", alt: "Avatar model render 2" },
-      { src: "/images/avatar-3.png", alt: "Avatar model render 3" },
-      { src: "/images/shipwreck-ship.png", alt: "Shipwreck model render" },
-    ],
-    videos: [
-      { id: "fgfr_kAhnGU", label: "Animation 01" },
-      { id: "AiPC00Xvt88", label: "Animation 02" },
-      { id: "tzou_ZFu_Eo", label: "Animation 03" },
-    ],
     links: [],
   },
   {
