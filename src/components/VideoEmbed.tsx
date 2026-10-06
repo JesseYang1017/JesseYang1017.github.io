@@ -22,6 +22,14 @@ export default function VideoEmbed({ video }: VideoEmbedProps) {
           allowFullScreen
         />
       </div>
+      {video.description ? (
+        <p className="mt-3 text-sm leading-6 text-muted">{video.description}</p>
+      ) : null}
+      {video.techniques ? (
+        <p className="mt-2 border-t border-dotted border-[#a9b7da] pt-2 font-mono text-[11px] uppercase tracking-[0.08em] text-[#53617f]">
+          {video.techniques}
+        </p>
+      ) : null}
     </figure>
   );
 }

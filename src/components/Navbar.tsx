@@ -4,11 +4,8 @@ export default function Navbar() {
       <div className="retro-panel">
         <div className="retro-titlebar flex items-center justify-between gap-3">
           <a href="/" className="font-semibold transition hover:text-[#9d4f25]">
-            Jesse Yang
+            Xinyi Yang
           </a>
-          <span aria-hidden="true" className="hidden text-[10px] sm:inline">
-            personal art + graphics site
-          </span>
         </div>
         <nav
           aria-label="Primary navigation"
