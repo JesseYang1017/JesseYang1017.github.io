@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+    background: #dfe9ff;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    background:
+      radial-gradient(circle at 12px 12px, rgba(80, 114, 183, 0.13) 1px, transparent 1.5px),
+      linear-gradient(180deg, #dfe9ff 0%, #f8f3df 44%, #efe7ff 100%);
+    background-size: 24px 24px, 100% 100%;
+    color: #263154;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+@layer components {
+  .nav-link {
+    @apply border border-[#7f92c7] bg-[#f7f5ff] px-2.5 py-1 text-[#263154] shadow-[inset_1px_1px_0_#ffffff,inset_-1px_-1px_0_#bcc8ef] transition hover:bg-[#fff7d7] hover:text-[#9d4f25];
+  }
+
+  .tag {
+    @apply border border-[#97a8d4] bg-[#eef4ff] px-2 py-1 font-mono text-[11px] uppercase tracking-[0.08em] text-[#39476b] shadow-[inset_1px_1px_0_#ffffff];
+  }
+
+  .section-block {
+    @apply mt-8 border border-[#8c9dcb] bg-[#fffdf4] p-4 shadow-[4px_4px_0_rgba(86,105,160,0.16)] sm:p-5;
+  }
+
+  .section-title {
+    @apply -mx-4 -mt-4 mb-5 border-b border-[#8c9dcb] bg-gradient-to-r from-[#b9cdfb] via-[#d9e5ff] to-[#f3d8ff] px-4 py-2 font-mono text-xs uppercase tracking-[0.14em] text-[#263154] sm:-mx-5 sm:-mt-5 sm:px-5;
+  }
+
+  .button-link {
+    @apply inline-flex items-center justify-center border border-[#7d8fc1] bg-gradient-to-b from-[#ffffff] to-[#dce7ff] px-3 py-2 font-mono text-xs uppercase tracking-[0.1em] text-[#263154] shadow-[inset_1px_1px_0_#ffffff,2px_2px_0_rgba(86,105,160,0.18)] transition hover:from-[#fff5cf] hover:to-[#f4ddff] hover:text-[#9d4f25];
+  }
+
+  .page-shell {
+    @apply mx-auto max-w-6xl px-3 py-4 sm:px-5 sm:py-6;
+  }
+
+  .retro-panel {
+    @apply border border-[#8c9dcb] bg-[#fffdf4] shadow-[5px_5px_0_rgba(86,105,160,0.16)];
+  }
+
+  .retro-titlebar {
+    @apply border-b border-[#8c9dcb] bg-gradient-to-r from-[#9fb9f2] via-[#cbdcff] to-[#f0d0fb] px-3 py-2 font-mono text-xs uppercase tracking-[0.12em] text-[#263154];
+  }
+}
