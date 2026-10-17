@@ -25,6 +25,7 @@ export type Project = {
   title: string;
   category: string;
   summary: string;
+  showCardLinks?: boolean;
   overview: string[];
   approach?: string[];
   contribution?: string[];
@@ -484,6 +485,48 @@ export const projects: Project[] = [
         label: "Project Folder",
         href: "https://drive.google.com/drive/folders/1HYBAcS9R69kTm78GdmirbZVC2v2K_iFB?usp=drive_link",
       },
+    ],
+  },
+  {
+    slug: "opengl-3d-graphics",
+    title: "OpenGL 3D Graphics",
+    category: "Graphics Programming",
+    summary: "C++/OpenGL exercises exploring model transformations, camera viewing, and projection.",
+    showCardLinks: true,
+    overview: [
+      "Two Computer Graphics coursework exercises at Trinity College Dublin exploring model transformations, camera viewing, and projection in C++ and OpenGL.",
+    ],
+    contribution: [
+      "Implemented keyboard-controlled translation, rotation, and uniform scaling, and experimented with the order of model transformations.",
+      "Set up front and top-down camera views with perspective and orthographic projection, plus controls for field of view, camera distance, and the far clipping plane.",
+    ],
+    features: [
+      {
+        title: "Model Transformations",
+        description: "Keyboard controls for translation, rotation, and uniform scaling, with experiments in transformation order.",
+      },
+      {
+        title: "Viewing and Projection",
+        description: "Front and top-down views, perspective and orthographic projection, and adjustable viewing parameters.",
+      },
+    ],
+    technologies: ["C++", "OpenGL", "GLSL", "Assimp", "3D Math"],
+    thumbnail: {
+      src: "/images/opengl.png",
+      alt: "Two green 3D monkey heads rendered in OpenGL",
+    },
+    images: [
+      {
+        src: "/images/opengl.png",
+        alt: "Two green 3D monkey heads rendered in OpenGL",
+      },
+    ],
+    videos: [
+      { id: "8cV2eWbY4uk", label: "Model Transformations" },
+      { id: "HHL5rqAwE5E", label: "Viewing & Projection" },
+    ],
+    links: [
+      { label: "GitHub", href: "https://github.com/JesseYang1017/OpenGL-3D-Graphics" },
     ],
   },
 ];

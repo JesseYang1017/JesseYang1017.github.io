@@ -9,7 +9,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
   const previewImage = project.thumbnail ?? project.images[0];
 
   return (
-    <a className="group block retro-panel bg-[#fffdf4] p-2" href={`/projects/${project.slug}`}>
+    <article className="group relative retro-panel bg-[#fffdf4] p-2">
       <div className="retro-titlebar mb-2 flex items-center justify-between">
         <span>{String(index + 1).padStart(2, "0")}</span>
         <span className="truncate pl-4">{project.category}</span>
@@ -32,13 +32,44 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       </div>
       <div className="px-1 pb-1 pt-3">
         <h2 className="text-lg font-semibold text-[#263154] transition group-hover:text-[#9d4f25]">
-          {project.title}
+          <a
+            className="after:absolute after:inset-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9d4f25]"
+            href={`/projects/${project.slug}`}
+          >
+            {project.title}
+          </a>
         </h2>
         <p className="mt-1 text-sm leading-6 text-muted">{project.summary}</p>
         <p className="mt-3 border-t border-dotted border-[#a9b7da] pt-2 font-mono text-[11px] uppercase tracking-[0.08em] text-[#53617f]">
           {project.technologies.join(" / ")}
         </p>
+        {project.showCardLinks ? (
+          <div className="relative z-10 mt-3 flex flex-wrap gap-x-4 gap-y-2 font-mono text-[11px] text-[#53617f]">
+            {project.videos.map((video) => (
+              <a
+                key={video.id}
+                className="underline decoration-[#a9b7da] underline-offset-2 hover:text-[#9d4f25] focus-visible:text-[#9d4f25]"
+                href={`https://youtu.be/${video.id}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {video.label} ↗
+              </a>
+            ))}
+            {project.links.map((link) => (
+              <a
+                key={link.href}
+                className="underline decoration-[#a9b7da] underline-offset-2 hover:text-[#9d4f25] focus-visible:text-[#9d4f25]"
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {link.label} ↗
+              </a>
+            ))}
+          </div>
+        ) : null}
       </div>
-    </a>
+    </article>
   );
 }

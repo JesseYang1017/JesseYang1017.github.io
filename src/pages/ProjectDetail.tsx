@@ -12,7 +12,7 @@ const flagshipProjectSlugs = new Set([
   "procedural-weathered-metal",
 ]);
 
-const technicalProjectSlugs = new Set(["nist", "explore-shipwreck"]);
+const technicalProjectSlugs = new Set(["nist", "explore-shipwreck", "opengl-3d-graphics"]);
 
 function getProjectTemplate(project: Project): ProjectTemplate {
   if (flagshipProjectSlugs.has(project.slug)) {
